@@ -12,13 +12,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  encry_password: {
+  password: {
     type: String,
     required: true,
   },
-  profile_pic: {
+  photo: {
     type: Buffer,
-    required: true,
+    contentType: String,
   },
 });
 
