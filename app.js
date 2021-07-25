@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const helmet = require("helmet");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
 app.use(express.json({ extented: false }));
+
+//My routes
+app.use("/api", authRoutes);
 
 app.get("/", (req, res) => {
   return res.json({
