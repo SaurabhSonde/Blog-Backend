@@ -1,4 +1,3 @@
-const { findByIdAndUpdate } = require("../models/user");
 const User = require("../models/user");
 
 exports.getUserById = (req, res, next, id) => {
