@@ -54,7 +54,7 @@ exports.signin = async (req, res) => {
       res.cookie("token", token, { expire: new Date() + 9999 });
 
       //sending response to frontend
-      const { _id, name, email, blogs } = user;
+      const { _id, name, email, blogs, role } = user;
       return res.json({ token, user: { _id, name, email, blogs, role } });
     } else {
       res.status(400).json({ error: "Invalid Password or Email" });
@@ -73,7 +73,7 @@ exports.signout = (req, res) => {
 };
 
 //checking if user is signed in or not
-exports.isSigned = expressJwt({
+exports.isSignedIn = expressJwt({
   secret: process.env.SECRET,
   userProperty: "auth",
   algorithms: ["sha1", "RS256", "HS256"],
