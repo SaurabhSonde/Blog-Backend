@@ -18,6 +18,7 @@ exports.getUser = (req, res) => {
   return res.json(req.profile);
 };
 
+// TODO: Photo updation remain
 exports.updateUser = (req, res) => {
   User.findByIdAndUpdate(
     { _id: req.profile._id },
