@@ -80,7 +80,7 @@ exports.blogImage = (req, res, next) => {
 };
 
 //update blog
-exports.updateBlog = (req, res, blogId) => {
+exports.updateBlog = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
 
