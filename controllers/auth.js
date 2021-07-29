@@ -3,7 +3,6 @@ const expressJwt = require("express-jwt");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
-const e = require("express");
 
 exports.signup = async (req, res) => {
   const errors = validationResult(req);
