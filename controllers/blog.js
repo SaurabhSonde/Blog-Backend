@@ -127,3 +127,22 @@ exports.updateBlog = (req, res, blogId) => {
     });
   });
 };
+
+// getting all available blog
+exports.getAllBlogs = (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 8;
+
+  Blog.find()
+    .select("-blogImage")
+    .sort({ created_at: -1 })
+    .limit(limit)
+    .exec((err, blogs) => {
+      if (err) {
+        res.status(404).json({
+          error: "No blogs found",
+        });
+      }
+
+      res.json(blogs);
+    });
+};
