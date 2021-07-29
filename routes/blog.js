@@ -7,6 +7,7 @@ const {
   getBlogById,
   getBlog,
   updateBlog,
+  getAllBlogs,
 } = require("../controllers/blog");
 const { getUserById } = require("../controllers/user");
 
@@ -41,5 +42,8 @@ router.put(
   isAdmin,
   updateBlog
 );
+
+//get all available blog
+router.get("/blogs", getAllBlogs);
 
 module.exports = router;
