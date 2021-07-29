@@ -3,6 +3,7 @@ const formidable = require("formidable");
 const fs = require("fs");
 const _ = require("lodash");
 
+// create blog
 exports.createBlog = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -145,4 +146,22 @@ exports.getAllBlogs = (req, res) => {
 
       res.json(blogs);
     });
+};
+
+// delete blog
+exports.deleteBlog = (req, res, blogId) => {
+  let blog = req.blog;
+
+  blog.remove((err, deletedBlog) => {
+    if (err) {
+      res.status(400).json({
+        error: "Failed to delete blog",
+      });
+    }
+
+    res.json({
+      message: "Blog deleted successfully",
+      deletedBlog,
+    });
+  });
 };
