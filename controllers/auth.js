@@ -2,6 +2,9 @@ const User = require("../models/user");
 const expressJwt = require("express-jwt");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const formidable = require("formidable");
+const _ = require("lodash");
+const fs = require("fs");
 const { validationResult } = require("express-validator");
 
 exports.signup = async (req, res) => {
