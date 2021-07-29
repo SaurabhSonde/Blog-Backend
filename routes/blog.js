@@ -8,6 +8,7 @@ const {
   getBlog,
   updateBlog,
   getAllBlogs,
+  deleteBlog,
 } = require("../controllers/blog");
 const { getUserById } = require("../controllers/user");
 
@@ -45,5 +46,14 @@ router.put(
 
 //get all available blog
 router.get("/blogs", getAllBlogs);
+
+//delete blog
+router.delete(
+  "/blog/delete/:blogId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  deleteBlog
+);
 
 module.exports = router;
