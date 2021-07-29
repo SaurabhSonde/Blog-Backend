@@ -51,6 +51,24 @@ exports.createBlog = (req, res) => {
   });
 };
 
+//getBlogById
+exports.getBlogById = (req, res, next, blogId) => {
+  Blog.findById(blogId).exec((err, blog) => {
+    if (err) {
+      res.status(400).json({
+        error: "Blog not found",
+      });
+    }
+    req.blog = blog;
+    next();
+  });
+};
+
+exports.getBlog = (req, res) => {
+  req.blog.blogImage = undefined;
+  return res.json(req.blog);
+};
+
 //middleware
 exports.blogImage = (req, res, next) => {
   if (req.blog.blogImage.data) {
