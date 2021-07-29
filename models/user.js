@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    photo: {
+    profile_pic: {
       type: Buffer,
       contentType: String,
     },
