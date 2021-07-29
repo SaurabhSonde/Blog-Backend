@@ -6,6 +6,7 @@ const {
   blogImage,
   getBlogById,
   getBlog,
+  updateBlog,
 } = require("../controllers/blog");
 const { getUserById } = require("../controllers/user");
 
@@ -31,5 +32,14 @@ router.get(
   getBlog
 );
 router.get("/blog/blogimage/:blogId/:userId", blogImage);
+
+//update routes
+router.put(
+  "/blog/update/:blogId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  updateBlog
+);
 
 module.exports = router;
