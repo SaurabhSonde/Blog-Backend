@@ -43,7 +43,7 @@ exports.updateUser = (req, res) => {
       });
     }
 
-    const { name, email, password, profile_pic, role } = fields;
+    const { name, email, password, profile_pic } = fields;
 
     if (profile_pic) {
       if (file.profile_pic.size == 0) {
