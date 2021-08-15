@@ -14,6 +14,15 @@ exports.signup = async (req, res) => {
     });
   }
 
+  const body = req.body;
+  const email = await User.findOne({ email: body.email });
+
+  if (email) {
+    return res.status(409).json({
+      error: "Email already exist.",
+    });
+  }
+
   const user = new User(req.body);
   //generating salt to hash password
   const salt = await bcrypt.genSalt(10);
@@ -23,7 +32,7 @@ exports.signup = async (req, res) => {
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
-        err: "NOT able to save user in DB",
+        error: "NOT able to save user in DB",
       });
     }
     res.json({
