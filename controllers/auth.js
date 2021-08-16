@@ -53,6 +53,11 @@ exports.signin = async (req, res) => {
   }
   const body = req.body;
   const user = await User.findOne({ email: body.email });
+  if (user.role === 0) {
+    return res.status(400).json({
+      error: "You are not allowed to signin.",
+    });
+  }
   if (user) {
     // check user password with hashed password stored in the database
     const validPassword = await bcrypt.compare(body.password, user.password);
