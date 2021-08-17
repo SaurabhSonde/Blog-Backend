@@ -92,11 +92,6 @@ exports.updateBlog = (req, res) => {
     }
 
     const { title, subTitle, blogBody } = fields;
-    if (file.blogImage.size == 0) {
-      return res.status(400).json({
-        error: "Please include image",
-      });
-    }
 
     if (!title || !subTitle || !blogBody) {
       return res.status(400).json({
