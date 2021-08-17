@@ -26,14 +26,8 @@ router.post(
 );
 
 //get routes
-router.get(
-  "/blog/:blogId/:userId",
-  isSignedIn,
-  isAuthenticated,
-  isAdmin,
-  getBlog
-);
-router.get("/blog/blogimage/:blogId/:userId", blogImage);
+router.get("/blog/:blogId", getBlog);
+router.get("/blog/blogimage/:blogId", blogImage);
 
 //update routes
 router.put(
