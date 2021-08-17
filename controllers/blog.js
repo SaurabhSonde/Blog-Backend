@@ -72,9 +72,9 @@ exports.getBlog = (req, res) => {
 
 //middleware
 exports.blogImage = (req, res, next) => {
-  if (req.blog.blogImage.data) {
+  if (req.blog.blogImage) {
     res.set("Content-Type", req.blog.blogImage.contentType);
-    return res.send(req.blog.blogImage.data);
+    return res.send(req.blog.blogImage);
   }
   next();
 };

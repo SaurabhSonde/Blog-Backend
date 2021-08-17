@@ -3,12 +3,12 @@ const router = express.Router();
 const { isAuthenticated, isSignedIn, isAdmin } = require("../controllers/auth");
 const {
   createBlog,
-  blogImage,
   getBlogById,
   getBlog,
   updateBlog,
   getAllBlogs,
   deleteBlog,
+  blogImage,
 } = require("../controllers/blog");
 const { getUserById } = require("../controllers/user");
 
