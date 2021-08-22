@@ -68,6 +68,7 @@ exports.getBlogById = (req, res, next, blogId) => {
 };
 
 exports.getBlog = (req, res) => {
+  req.blog.userId.profile_pic = undefined;
   req.blog.blogImage = undefined;
   return res.json(req.blog);
 };
@@ -77,6 +78,14 @@ exports.blogImage = (req, res, next) => {
   if (req.blog.blogImage) {
     res.set("Content-Type", req.blog.blogImage.contentType);
     return res.send(req.blog.blogImage);
+  }
+  next();
+};
+
+exports.profilePic = (req, res, next) => {
+  if (req.blog.userId.profile_pic) {
+    res.set("Content-Type", req.blog.userId.profile_pic.contentType);
+    return res.send(req.blog.userId.profile_pic);
   }
   next();
 };
