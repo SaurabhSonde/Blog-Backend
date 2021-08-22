@@ -9,6 +9,7 @@ const {
   getAllBlogs,
   deleteBlog,
   blogImage,
+  profilePic,
 } = require("../controllers/blog");
 const { getUserById } = require("../controllers/user");
 
@@ -28,7 +29,7 @@ router.post(
 //get routes
 router.get("/blog/:blogId", getBlog);
 router.get("/blog/blogimage/:blogId", blogImage);
-
+router.get("/user/profilepic/:blogId", profilePic);
 //update routes
 router.put(
   "/blog/update/:blogId/:userId",
