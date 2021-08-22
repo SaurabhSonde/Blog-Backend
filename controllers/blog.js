@@ -54,15 +54,17 @@ exports.createBlog = (req, res) => {
 
 //getBlogById
 exports.getBlogById = (req, res, next, blogId) => {
-  Blog.findById(blogId).exec((err, blog) => {
-    if (err) {
-      res.status(400).json({
-        error: "Blog not found",
-      });
-    }
-    req.blog = blog;
-    next();
-  });
+  Blog.findById(blogId)
+    .populate("userId", { name: 1, profile_pic: 1 })
+    .exec((err, blog) => {
+      if (err) {
+        res.status(400).json({
+          error: "Blog not found",
+        });
+      }
+      req.blog = blog;
+      next();
+    });
 };
 
 exports.getBlog = (req, res) => {
@@ -129,6 +131,7 @@ exports.getAllBlogs = (req, res) => {
   let limit = req.query.limit ? parseInt(req.query.limit) : 8;
 
   Blog.find()
+    .populate("userId", { name: 1, profile_pic: 1 })
     .select("-blogImage")
     .sort({ created_at: -1 })
     .limit(limit)
