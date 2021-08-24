@@ -18,6 +18,14 @@ const blogSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    markdown: {
+      type: String,
+      required: true,
+    },
+    sanitizedHtml: {
+      type: String,
+      required: true,
+    },
     blogBody: {
       type: String,
       required: true,
