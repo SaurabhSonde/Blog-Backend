@@ -15,14 +15,14 @@ exports.createBlog = (req, res) => {
       });
     }
 
-    const { title, subTitle, blogBody } = fields;
+    const { title, subTitle, markdown } = fields;
     if (file.blogImage.size == 0) {
       return res.status(400).json({
         error: "Please include image",
       });
     }
 
-    if (!title || !subTitle || !blogBody) {
+    if (!title || !subTitle || !markdown) {
       return res.status(400).json({
         error: "Please include all fields",
       });

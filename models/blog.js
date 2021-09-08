@@ -32,7 +32,6 @@ const blogSchema = new mongoose.Schema(
     },
     blogBody: {
       type: String,
-      required: true,
       trim: true,
     },
     blogImage: {
